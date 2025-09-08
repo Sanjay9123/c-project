@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include "h.h"
-
-st *hptr=(st*)0x50;
+#include <unistd.h>
 
 int main()
 {
-	char op;
-label:
+ st * hptr=0;
+ char op;
+ label:
 
 	printf("_________________________________\n");
 	printf("| *****STUDENT RECORD MENU***** |\n");
@@ -28,13 +28,26 @@ label:
 
 	if((op<='Z')&&(op>='A'))
 		op^=32;
-switch(op)
-{
+ switch(op)
+ {
 	case 'a':
-		add(hptr);
+		add(&hptr);
+		goto label;
 		break;
+
+	case 's':
+		show(hptr);
+		goto label;
+		break;
+
+	case 'd':
+		delete_(&hptr);
+		goto label;
+		break;//dummy
+
 	case 'e':
 		return 0;
+
 	default :
 		printf("\n\tENTER THE VALID DATA\n");
                 printf("\t********************\n\n");
@@ -42,8 +55,6 @@ switch(op)
 		goto label;
 	        break;	
 
-}
+ } 
 
-
-
-}
+ }

@@ -1,15 +1,13 @@
 #include <stdio.h>
-
+#include<stdlib.h>
 typedef struct student
 {
-        struct student *prev;
         int roll;
-        char name [20];
+        char name[20];
         float per;
         struct student *next;
-
-
 }st;
 
-
-void add(st *);
+void add(st **);
+void show(st*);
+void delete_(st**);
