@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h>
+#include<string.h>
+
 typedef struct student
 {
         int roll;
@@ -11,3 +13,4 @@ typedef struct student
 void add(st **);
 void show(st*);
 void delete_(st**);
+void save(st *);

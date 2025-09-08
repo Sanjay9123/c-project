@@ -12,7 +12,7 @@ void add(st**hptr)
     }
 
     printf("enter the name and percentage\n");
-    scanf("%s%f",temp->name,&temp->per);
+    scanf(" %s%f",temp->name,&temp->per);
     temp->next=0;
 
     if(*hptr==0)

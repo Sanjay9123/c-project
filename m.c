@@ -20,10 +20,8 @@ int main()
         printf("| t/T  : sort the list          |\n");
         printf("| l/L  : delete all the records |\n");
 	printf("| r/R  : reverse the list       |\n");
-	printf("|                               |\n");	
-	printf("| ENTER YOUR CHOICE:            |\n");
         printf("|_______________________________|\n");
-
+	printf("ENTER YOUR CHOICE : ");
 	scanf(" %c",&op);
 
 	if((op<='Z')&&(op>='A'))
@@ -44,6 +42,11 @@ int main()
 		delete_(&hptr);
 		goto label;
 		break;//dummy
+
+	case 'm':
+		save(hptr);
+		goto label;
+		break;
 
 	case 'e':
 		return 0;

@@ -4,29 +4,36 @@ extern char r[30];
 void delete_(st**hptr)
 {
 	char op;
-	printf("delete by roll or name or percent : 1,2,3\n");
+	printf("_________________________________\n");
+	printf("| R/r : enter roll to del       |\n");
+       	printf("| N/n : enter name to del       |\n");
+	printf("|_______________________________|\n");
+	printf("Enter your choice : ");
 	scanf(" %c",&op);
 
         st *temp,*last;
 	temp=*hptr;
 	last=*hptr;
-	if(op=='1')
+
+
+	if((op=='R')||(op=='r'))
 	{
 		int roll;
-		printf("enter the roll number");
-	        scanf("%d",&roll);      
-                if(temp->roll==roll)
-		{
-			*hptr=temp->next;
-			free(temp);
-			r[roll]=0;
-			return;
-		}
-		temp=temp->next;
+		printf("enter the roll number : ");
+	        scanf(" %d",&roll);
+			
 		while(temp!=0)
 		{
-               		 if(temp->roll==roll)
-			 {
+         if(temp->roll==roll)
+		 {
+			if(temp==*hptr)
+			{
+				*hptr=temp->next;
+				free(temp);
+				r[roll]=0;
+				return;
+			}
+			
 				 last->next=temp->next;
 				 free(temp);
 				 r[roll]=0;
@@ -38,4 +45,36 @@ void delete_(st**hptr)
 	}
 
 
+	//////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+
+        if((op=='N')||(op=='n'))
+        {
+                char name[20];
+                printf("enter the  name: ");
+                scanf(" %s",name);
+                
+                while(temp!=0)
+                {
+                         if(!(strcmp(name,temp->name)))
+                         {		
+		             	 if(*hptr==temp)
+			       	{				
+					*hptr=temp->next;	
+					r[temp->roll]=0;
+					free(temp);	
+					return;
+				}
+                                 last->next=temp->next;
+                                 r[temp->roll]=0;
+                                 free(temp);
+                                 return;
+                         }
+                         last=temp;
+                         temp=temp->next;
+                }
+
+
+          }
 }
