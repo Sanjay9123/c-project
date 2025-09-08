@@ -38,6 +38,11 @@ int main()
 		goto label;
 		break;
 
+	case 't':
+		sort(hptr);
+		goto label;
+		break;
+
 	case 'd':
 		delete_(&hptr);
 		goto label;

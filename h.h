@@ -14,3 +14,4 @@ void add(st **);
 void show(st*);
 void delete_(st**);
 void save(st *);
+void sort(st *);
