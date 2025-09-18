@@ -8,7 +8,11 @@ void sort(st* hptr)
 
 
 	char ch;
-        printf("enter n or p : ");
+        printf("_________________________________\n");
+        printf("| P/p : sort with percentage     |\n");
+        printf("| N/n : sort with name           |\n");
+        printf("|________________________________|\n");
+        printf("Enter your choice : ");
 	scanf(" %c",&ch);
 	for(i=0;temp!=0;i++)
                 temp=temp->next;

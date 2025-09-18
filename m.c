@@ -1,11 +1,43 @@
 #include<stdio.h>
 #include "h.h"
 #include <unistd.h>
-
+ char r[30];
 int main()
 {
- st * hptr=0;
- char op;
+	FILE *raw=fopen("raw.txt","r");
+
+ 	st * hptr=0;	
+	int size=sizeof(st)-8;
+	st temp;
+	if(raw!=NULL)
+	{
+		while((fscanf(raw,"%d %s %f",&temp.roll,temp.name,&temp.per))!=EOF)
+		{
+			st * t=(st *)malloc(sizeof(st));
+			memcpy(t,&temp,size);
+			t->next=0;
+			
+			if(hptr==0)
+			{
+			    hptr=t;
+			    r[temp.roll]=1;
+			}
+			else
+			{
+			 	 st * last=hptr;
+        			 while(last->next!=0)
+                    			last=last->next;
+				 last->next=t;
+				 r[t->roll]=1;
+			}
+		}
+
+
+			
+		fclose(raw);
+	}
+
+	 char op;
  label:
 
 	printf("_________________________________\n");
@@ -15,7 +47,8 @@ int main()
 	printf("| a/A  : add new record         |\n");
 	printf("| d/D  : delete a record        |\n");
 	printf("| s/S  : show the list          |\n");
-        printf("| m/M  : save                   |\n");
+        printf("| m/M  : modify a record        |\n");
+        printf("| v/V  : save                   |\n");
 	printf("| e/E  : exit                   |\n");
         printf("| t/T  : sort the list          |\n");
         printf("| l/L  : delete all the records |\n");
@@ -37,6 +70,11 @@ int main()
 		show(hptr);
 		goto label;
 		break;
+       
+	case 'm':
+                modify(hptr);
+                goto label;
+                break;
 
 	case 't':
 		sort(hptr);
@@ -48,13 +86,41 @@ int main()
 		goto label;
 		break;//dummy
 
-	case 'm':
+	case 'v':
 		save(hptr);
 		goto label;
 		break;
+	
+       	case 'l':
+                delete_all(&hptr);
+                goto label;
+                break;
+	
+	
+       	case 'r':
+                reverse(&hptr);
+                goto label;
+                break;
 
 	case 'e':
-		return 0;
+		 char ch;
+		 printf("_________________________________\n");
+                 printf("| s/S : save and exit            |\n");
+                 printf("| E/e : exit without saving      |\n");
+                 printf("|________________________________|\n");
+                 printf("Enter your choice : ");
+                 scanf(" %c",&ch);
+		 if(ch=='s' || ch=='S')
+		 {
+			 save(hptr);
+			 return 0;
+		 }
+		 else if(ch=='e' || ch=='E')
+		 	 return 0;
+		 else
+			 goto label;
+		 
+			 
 
 	default :
 		printf("\n\tENTER THE VALID DATA\n");

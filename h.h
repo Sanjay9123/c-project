@@ -15,3 +15,6 @@ void show(st*);
 void delete_(st**);
 void save(st *);
 void sort(st *);
+void modify(st *);
+void delete_all(st **);
+void reverse(st **);

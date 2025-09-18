@@ -1,6 +1,6 @@
 #include "h.h"
 
-char r[30]={0};
+extern char r[30];
 void add(st**hptr)
 {
     int i;
