@@ -14,4 +14,5 @@ void save(st *hptr)
         fprintf(op,"|-----|---------------------|---------|\n");
         hptr=hptr->next;	
         }
+	printf("\n*************saved**************\n");
 }

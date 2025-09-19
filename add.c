@@ -35,4 +35,5 @@ void add(st**hptr)
   	  last->next=temp;
 	  r[i]=1;
     }
+    printf("\t***********data added***********\n");
 }

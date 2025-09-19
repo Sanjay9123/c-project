@@ -30,6 +30,7 @@ void delete_(st**hptr)
 			{
 				*hptr=temp->next;
 				free(temp);
+				printf("\t****************ROLL=%d node deleted**********\n",roll);	
 				r[roll]=0;
 				return;
 			}
@@ -37,6 +38,7 @@ void delete_(st**hptr)
 				 last->next=temp->next;
 				 free(temp);
 				 r[roll]=0;
+				printf("\t****************ROLL=%d node deleted**********\n",roll);	
 				 return;
 			 }
 			 last=temp;
@@ -63,18 +65,19 @@ void delete_(st**hptr)
 			       	{				
 					*hptr=temp->next;	
 					r[temp->roll]=0;
-					free(temp);	
-					return;
+					free(temp);
+					printf("\t****************name=%s node deleted**********\n",name);					return;
 				}
                                  last->next=temp->next;
                                  r[temp->roll]=0;
                                  free(temp);
+			       	printf("\t****************name=%s node deleted**********\n",name);	
                                  return;
                          }
                          last=temp;
                          temp=temp->next;
                 }
 
-
+		
           }
 }

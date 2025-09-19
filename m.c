@@ -37,7 +37,7 @@ int main()
 		fclose(raw);
 	}
 
-	 char op;
+	 char op,ch;
  label:
 
 	printf("_________________________________\n");
@@ -92,7 +92,7 @@ int main()
 		break;
 	
        	case 'l':
-                delete_all(&hptr);
+		delete_all(&hptr);
                 goto label;
                 break;
 	
@@ -103,7 +103,6 @@ int main()
                 break;
 
 	case 'e':
-		 char ch;
 		 printf("_________________________________\n");
                  printf("| s/S : save and exit            |\n");
                  printf("| E/e : exit without saving      |\n");
