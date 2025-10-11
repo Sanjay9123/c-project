@@ -19,7 +19,9 @@ void delete_(st**hptr)
 	if((op=='R')||(op=='r'))
 	{
 		int roll;
+                label:
 		printf("enter the roll number : ");
+
 	        scanf(" %d",&roll);
 			
 		while(temp!=0)
@@ -56,17 +58,30 @@ void delete_(st**hptr)
                 char name[20];
                 printf("enter the  name: ");
                 scanf(" %s",name);
-                
+                int i=0;
+		st *check=temp;
                 while(temp!=0)
                 {
                          if(!(strcmp(name,temp->name)))
+			{
+				printf("%d %s %f\n",temp->roll,temp->name,temp->per);
+				i++;
+			}
+
+                         last=temp;
+                         temp=temp->next;
+		}
+		temp=check;
+			if(i==1)
                          {		
 		             	 if(*hptr==temp)
-			       	{				
+			       	{
+
 					*hptr=temp->next;	
 					r[temp->roll]=0;
 					free(temp);
-					printf("\t****************name=%s node deleted**********\n",name);					return;
+					printf("\t****************name=%s node deleted**********\n",name);		
+					return;
 				}
                                  last->next=temp->next;
                                  r[temp->roll]=0;
@@ -74,10 +89,17 @@ void delete_(st**hptr)
 			       	printf("\t****************name=%s node deleted**********\n",name);	
                                  return;
                          }
-                         last=temp;
-                         temp=temp->next;
+
+			temp=check;
+
+			 if(i>1)
+			{
+				printf("\nplease select the roll number ");
+				goto label;
+
+			}
                 }
 
 		
           }
-}
+

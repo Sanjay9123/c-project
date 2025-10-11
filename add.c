@@ -10,9 +10,15 @@ void add(st**hptr)
         printf("Memory allocation failed!\n");
         return;
     }
-
+    scan:
     printf("enter the name and percentage\n");
     scanf(" %s%f",temp->name,&temp->per);
+    if(temp->per>100 || temp->per<0)
+    {
+	    printf("invalid percentage\n");
+	    goto scan;
+    }
+
     temp->next=0;
 
     if(*hptr==0)
